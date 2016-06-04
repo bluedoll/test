@@ -1,0 +1,67 @@
+#include "stdafx.h"
+#include <iostream>
+#include <time.h>
+#include <cmath>
+int main()
+{
+
+	clock_t t1, t2;
+	t1 = clock();
+	int x=4;
+	int y(0);
+	int sum(0);
+	int sumpiece(0);
+	int sumsplice(0);
+	
+	/*this sums the digits of the last term with the previous sum*/
+	for (int i = 0; i < 10e5-3; ++i)
+	{
+		sumpiece = x;
+		/*std::cout << "to be summed" << sumpiece << std::endl;*/
+		//int z = log10(sumpiece);
+		/*this sums the digits of x*/
+		do
+		{
+			sumsplice = sumpiece % 10;
+				sum = sum + sumsplice;
+			sumpiece = sumpiece/10;
+			
+		} while (sumpiece >= 10);
+		sum = sum + sumpiece;
+		
+		
+		//version 1
+		//for (int m = 1; m <= z + 1; m++)
+		//{
+			//int z = log10(sumpiece);
+			/*std::cout << "int z" << z << std::endl;*/
+			//int t = pow(10, z);
+			/*std::cout << t << std::endl;*/
+			//if (t == 0) { break; }
+			//else {
+				//sumsplice = sumpiece / t;
+				/*std::cout << "internal sumsplice" << sumsplice << std::endl;*/
+				//sum = sum + sumsplice;
+				//sumpiece = sumpiece % t;
+				/*std::cout << "internal sum" << sum << std::endl;*/
+				//			}
+				//}
+		/*std::cout << "sum" << sum << std::endl;*/
+		/*std::cout << "x" << x << std::endl;*/
+		y = x + sum;
+		/*std::cout << "y" << y << std::endl;*/
+		x = y;
+		sum = 0;
+		}
+	std::cout << "test";
+	std::cout << y << std::endl;
+
+
+	t2 = clock();
+	float diff((float)t2 - (float)t1);
+	float seconds = diff / CLOCKS_PER_SEC;
+
+	std::cout << seconds << std::endl;
+
+    return 0;
+}
